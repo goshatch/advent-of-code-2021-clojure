@@ -3,5 +3,5 @@
 Best ran in a REPL. To start one:
 
 ```sh
-$ lein  repl
+$ lein repl
 ```
