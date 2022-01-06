@@ -107,6 +107,16 @@
   [board]
   (reduce + (map #(:value %) (filter #(= (:marked %) false) (flatten board)))))
 
+;; FIXME: This is a really terrible implementation, though it does find the
+;; correct answer.
+;;
+;; I thought that I was being smart by passing around `check-fn` and
+;; `board-select-fn` to `calculate-answers`, but this resulted in overly
+;; complected code that needs to be refactored.
+;;
+;; While the use case works for Part 1, for Part 2 it requires weird conditional
+;; custom code in `calculate-answers` as well as passing `nil` as
+;; `board-select-fn`, which is really ugly.
 (defn calculate-answer
   "Calculate the answer for a puzzle part.
   `n` is a seq of bingo numbers, `b` is a seq of bingo boards, `check-fn` is a
